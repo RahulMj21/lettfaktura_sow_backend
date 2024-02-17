@@ -1,8 +1,15 @@
-exports.create = async (_request, reply) => {
+const { Product } = require("../database");
+
+exports.create = async (request, reply) => {
   try {
-    return reply
-      .code(201)
-      .serialize({ status: "OK", message: "product added successfully" });
+    const payload = request.body;
+
+    const productRes = await Product.create(payload);
+    return reply.code(201).serialize({
+      status: "OK",
+      message: "product added successfully",
+      data: productRes.toJSON(),
+    });
   } catch (error) {
     return reply
       .code(500)
@@ -12,8 +19,11 @@ exports.create = async (_request, reply) => {
 
 exports.getAll = async (_request, reply) => {
   try {
-    return reply.code(200).serialize({ status: "OK" });
+    const products = await Product.findAll();
+
+    return reply.code(200).serialize({ status: "OK", data: products });
   } catch (error) {
+    console.log({ error });
     return reply
       .code(500)
       .serialize({ status: "ERROR", message: "internal server error" });

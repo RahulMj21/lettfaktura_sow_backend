@@ -1,7 +1,9 @@
-const { profile } = require("../controllers/userController");
-
-const userRoutes = async (fastify) => {
-  fastify.get("/config", { handler: profile });
+const cmsRoutes = async (fastify) => {
+  fastify.get("/config", {
+    handler: async () => {
+      return { status: "OK" };
+    },
+  });
 };
 
-module.exports = userRoutes;
+module.exports = cmsRoutes;

@@ -1,5 +1,5 @@
 const Fastify = require("fastify");
-const productRoutes = require("./routes/productRoutes ");
+const productRoutes = require("./routes/productRoutes");
 const healthcheckRoutes = require("./routes/healthcheckRoutes");
 const cmsRoutes = require("./routes/cmsRoutes");
 
