@@ -1,29 +1,36 @@
 const { DataTypes } = require("sequelize");
 const { sequelize } = require("../initDB");
 
-// defining the structure of the user table
-exports.User = sequelize.define(
-  "User",
+// defining the structure of the product table
+exports.Product = sequelize.define(
+  "Product",
   {
     // Model attributes are defined here
+    articleNo: {
+      type: DataTypes.NUMBER,
+      allowNull: false,
+    },
     name: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    email: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      unique: true,
-    },
-    password: {
+    description: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    address: {
+    inPrice: {
+      type: DataTypes.NUMBER,
+      allowNull: false,
+    },
+    price: {
+      type: DataTypes.NUMBER,
+      allowNull: false,
+    },
+    unit: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    postalCode: {
+    inStock: {
       type: DataTypes.NUMBER,
       allowNull: false,
     },
@@ -31,6 +38,5 @@ exports.User = sequelize.define(
   {
     // other attributes will go here
     createdAt: true,
-    updatedAt: true,
   },
 );

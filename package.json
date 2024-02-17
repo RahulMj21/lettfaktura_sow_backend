@@ -4,14 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node src/index.js",
-    "dev": "nodemon src/index.js"
+    "start": "NODE_ENV=prod node src/index.js",
+    "dev": "NODE_ENV=dev nodemon src/index.js"
   },
   "keywords": [],
   "author": "Rahul Mondal",
   "license": "ISC",
   "dependencies": {
-    "argon2": "^0.31.2",
     "dotenv": "^16.4.3",
     "fastify": "^4.26.0",
     "jsonwebtoken": "^9.0.2",
