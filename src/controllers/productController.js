@@ -19,11 +19,10 @@ exports.create = async (request, reply) => {
 
 exports.getAll = async (_request, reply) => {
   try {
-    const products = await Product.findAll();
+    const products = await Product.findAll({ order: [["id", "ASC"]] });
 
     return reply.code(200).serialize({ status: "OK", data: products });
   } catch (error) {
-    console.log({ error });
     return reply
       .code(500)
       .serialize({ status: "ERROR", message: "internal server error" });
