@@ -2,7 +2,7 @@ const { Sequelize, DataTypes } = require("sequelize");
 const { DB_URL } = require("../config");
 
 // Initializing Sequelize
-const sequelize = new Sequelize(DB_URL);
+const sequelize = new Sequelize(DB_URL, { logging: false });
 
 // ConnectDB function will try to test the connection
 
@@ -65,9 +65,10 @@ const SidebarLink = sequelize.define("SidebarLink", {
     allowNull: false,
   },
 });
+
 const TermsText = sequelize.define("TermsText", {
   title: { type: DataTypes.STRING },
-  description: { type: DataTypes.STRING },
+  description: { type: DataTypes.TEXT },
 });
 
 const initDB = async () => {
@@ -76,7 +77,7 @@ const initDB = async () => {
       await Product.sync({ force: false });
       await Navlink.sync({ force: false });
       await SidebarLink.sync({ force: false });
-      await TermsText.sync({ force: false });
+      await TermsText.sync({ force: false, alter: true });
     });
     console.log("DB Connected...");
   } catch (error) {

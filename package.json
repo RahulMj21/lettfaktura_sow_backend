@@ -11,6 +11,7 @@
   "author": "Rahul Mondal",
   "license": "ISC",
   "dependencies": {
+    "@fastify/cors": "^9.0.1",
     "dotenv": "^16.4.3",
     "fastify": "^4.26.0",
     "jsonwebtoken": "^9.0.2",
